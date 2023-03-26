@@ -1,0 +1,33 @@
+<form [formGroup]="postForm">
+  <div class="title-add">
+    <h1>Article</h1>
+    <button (click)="sendPost()" class="btn">Publier</button>
+  </div>
+
+  <div class="input">
+    <label for="picture">Image</label>
+    <input type="file" formControlName="picture" id="picture" #inputImage (change)="onFileChange($event)">
+    <div class="add-image" (click)="inputImage.click()">
+      <img [src]="imagePreview" *ngIf="imagePreview" alt="" class="img-preview">
+      <span *ngIf="!imagePreview">Ajouter une image</span>
+    </div>
+  </div>
+  <div class="input">
+    <label for="title">Titre</label>
+    <input type="text" formControlName="title" id="title" placeholder="Titre de l'article">
+  </div>
+  <div class="input">
+    <label for="category">Catégorie</label>
+    <select formControlName="category" id="category">
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+  </div>
+  <div class="input">
+    <label for="content">Contenu</label>
+    <textarea formControlName="content" id="content" [froalaEditor]="{
+  placeholderText: 'Contenu de l\'article',
+  charCounterCount: false,
+  height: 300
+}"></textarea>
+  </div>
+</form>

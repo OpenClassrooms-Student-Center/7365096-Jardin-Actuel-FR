@@ -1,0 +1,36 @@
+<header>
+  <a [routerLink]="['/']"><img src="assets/logo{{ darkmode ? '-darkmode' : ''}}.png" alt="Logo Jardin Actuel"></a>
+  <nav>
+    <ul>
+      <li *ngFor="let category of categories">
+        <a [routerLink]="['/category', category.id]">{{ category.name }}</a>
+      </li>
+      <li *ngIf="!api.isLogged()">
+        <a [routerLink]="['/login']">Connexion</a>
+      </li>
+      <li *ngIf="api.isLogged() && !admin">
+        <a (click)="logout()">Déconnexion</a>
+      </li>
+      <li *ngIf="api.isLogged() && admin" (mouseenter)="showMenu()" (mouseleave)="hideMenu()">
+        <a>Administration</a>
+        <ul id="admin-menu" *ngIf="menuShowed">
+          <li><a [routerLink]="['/posts', 'add']">Créer un article</a></li>
+          <li><a [routerLink]="['/comments']">Gestion des commentaires</a></li>
+          <li><a (click)="logout()">Déconnexion</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div id="dark-mode">
+    <img (click)="changerDarkmode()" [src]="'assets/darkmode-' + (darkmode ? 'on' : 'off') + '.png'" [alt]="darkmode ? 'Désactiver le dark mode' : 'Activer le dark mode'" />
+  </div>
+</header>
+<router-outlet></router-outlet>
+<footer>
+  <nav>
+    <ul>
+      <li><a [routerLink]="['/contact']">Contact</a></li>
+      <li><a routerLink="/">Jardin Actuel 2023 ©</a></li>
+    </ul>
+  </nav>
+</footer>

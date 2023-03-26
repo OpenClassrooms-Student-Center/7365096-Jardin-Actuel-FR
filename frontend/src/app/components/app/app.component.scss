@@ -1,0 +1,99 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  max-width: 1340px;
+  width: 100%;
+  margin: auto;
+
+  a img {
+    width: 200px;
+  }
+
+  nav > ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    li {
+      position: relative;
+
+      a {
+        color: #275A42;
+        text-decoration: none;
+        padding: 5px 35px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    #admin-menu {
+      position: absolute;
+      top: 25px;
+      left: 0;
+      width: 100%;
+      background: #275A42;
+      z-index: 10;
+      list-style: none;
+      transition: 1s;
+      padding: 5px;
+
+      li, a {
+        padding: 10px 0;
+        text-align: center;
+        color: white;
+      }
+
+    }
+  }
+}
+
+::ng-deep .darkmode header nav ul li a {
+  color: #E6E6E6 !important;
+}
+
+
+footer {
+  background: white;
+  margin: 0;
+  padding: 10px 50px;
+  transition: 1s;
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: flex-end;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: black;
+      padding: 10px 20px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+::ng-deep .darkmode footer {
+  background: #111111;
+
+  a {
+    color: #E6E6E6 !important;
+  }
+}
+
+
+@media all and (max-width: 668px) {
+  footer {
+    padding: 10px;
+  }
+}

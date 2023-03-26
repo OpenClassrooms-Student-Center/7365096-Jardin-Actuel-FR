@@ -1,0 +1,14 @@
+<div class="login-register">
+  <div class="img-decorative">
+  </div>
+  <form [formGroup]="registerForm" class="login-register-form">
+    <h1>Inscription</h1>
+
+    <input type="text" formControlName="name" placeholder="Nom">
+    <input type="email" formControlName="email" placeholder="Adresse email">
+    <input type="email" formControlName="emailConfirm" placeholder="Confirmez votre adresse email">
+    <input type="password" formControlName="password" placeholder="Mot de passe">
+    <input type="submit" (click)="register()" [value]="registerInProgress ? 'Inscription...' : 'S\'inscrire'">
+    <p><a [routerLink]="['/login']">Déjà un compte ? Connectez-vous</a></p>
+  </form>
+</div>

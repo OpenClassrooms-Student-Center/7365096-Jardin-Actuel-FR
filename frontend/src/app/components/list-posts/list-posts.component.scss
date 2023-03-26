@@ -1,0 +1,159 @@
+.mini-post {
+  width: 376px;
+  margin-bottom: 25px;
+
+  img {
+    border-radius: 30px;
+    overflow: hidden;
+    width: 376px;
+    height: 376px;
+  }
+}
+
+section.list-posts {
+  margin: auto;
+  max-width: 1340px;
+  padding: 15px;
+}
+
+.list-posts-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-posts-title form {
+  display: flex;
+  background: #FFFCF7;
+  border: 1px solid #E6E6E6;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.list-posts-title form img {
+  padding: 15px 15px 15px 0;
+  width: 28px;
+}
+
+.list-posts-title form input {
+  border: none;
+  background: transparent;
+  color: #121212;
+  font-family: 'Manrope', sans-serif;
+  padding: 5px 10px;
+  font-size: 14px;
+  width: 200px;
+}
+
+.list-posts-title h2 {
+  font-size: 40px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: normal;
+  color: #275A42;
+}
+
+.list-posts-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+article.mini-post h3 {
+  font-weight: normal;
+  font-size: 22px;
+  color: black;
+  font-family: 'Merriweather', sans-serif;
+  text-decoration: none;
+}
+
+article.mini-post a {
+  color: inherit;
+  text-decoration: none;
+}
+
+article.mini-post p.intro {
+  font-size: 16px;
+  color: #121212;
+}
+
+p.details {
+  font-size: 11.5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+span.circle {
+  margin: 0 7px;
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  background: #275A42;
+  border-radius: 50%;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.pagination-item.pagination-number.pagination-active {
+  border: 1px solid #275A42;
+  color: #275A42;
+  background: #275A4233;
+  cursor: initial;
+}
+
+.pagination-item {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+::ng-deep .darkmode {
+  .list-posts-title h2, .list-posts-container h3, .list-posts-container p {
+    color: #E6E6E6 !important;
+  }
+
+  .pagination-item {
+    color: #FFFFFF80;
+  }
+
+  .pagination-item.pagination-number.pagination-active {
+    color: #E6E6E6;
+    border-color: #E6E6E6;
+    background: #E6E6E633;
+  }
+}
+
+@media all and (max-width: 992px) {
+}
+
+@media all and (max-width: 668px) {
+  .list-posts-container {
+    justify-content: center !important;
+  }
+
+  .list-posts-title {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .list-posts-title form {
+    margin: auto;
+  }
+
+  article.mini-post, article.mini-post img {
+    width: 300px !important;
+  }
+}

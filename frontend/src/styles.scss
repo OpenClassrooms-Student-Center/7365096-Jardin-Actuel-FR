@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Merriweather', sans-serif;
+}
+
+body {
+  background: #FFF8EC;
+  color: #121212;
+  transition: 1s;
+  display: flex;
+  flex-direction: column;
+
+  app-root {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    & > *:not(header, footer, router-outlet) {
+      flex-grow: 1;
+    }
+  }
+}
+
+body.darkmode {
+  background: #232323;
+  color: #E6E6E6;
+}
+
+button.btn.btn-primary, .darkmode button.btn.btn-primary:hover {
+  color: #275A42;
+  background: #FFF8EC;
+  border: 1px solid #275A42;
+  border-radius: 10px;
+  padding: 15px 61px;
+  margin-top: 15px;
+  font-size: 17px;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.darkmode button.btn.btn-primary, button.btn.btn-primary:hover {
+  background: #10261C;
+  color: #FFF8EC;
+}
+
+app-login, app-register {
+  display: flex;
+  width: 100%;
+}
+
+.login-register {
+  width: 100%;
+  display: flex;
+
+  p, a {
+    color: #275A42;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .ng-submitted input.ng-invalid {
+    border-color: red !important;
+  }
+
+  .img-decorative {
+    width: 440px;
+    margin-right: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  form {
+    max-width: 650px;
+    margin: auto;
+
+    h1 {
+      color: #275A42;
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    input {
+      color: #121212;
+      border: 1px solid #E6E6E6;
+      border-radius: 16px;
+      height: 60px;
+      padding: 15px;
+      font-size: 16px;
+      margin: auto;
+      width: 100%;
+      margin-bottom: 25px;
+
+      &[type="submit"] {
+        background: #FFF8EC;
+        color: #275A42;
+        border: 1px solid #275A42;
+        width: 100%;
+        margin-bottom: 15px;
+        margin-top: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+        font-weight: bold;
+
+        &:hover {
+          background: #10261C;
+          color: #FFF8EC;
+        }
+      }
+    }
+  }
+}
+
+.darkmode {
+  .login-register {
+    h1, p, a {
+      color: #E6E6E6 !important;
+    }
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .login-register {
+    flex-direction: column;
+
+    form {
+      width: 90%;
+    }
+  }
+}
+
+
+
+@media all and (max-width: 992px) {
+  header nav > ul > li:not(:last-child) {
+    display: none;
+  }
+}
+
+@media all and (max-width: 668px) {
+
+  header nav, #dark-mode {
+    display: none;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

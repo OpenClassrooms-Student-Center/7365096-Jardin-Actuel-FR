@@ -1,0 +1,88 @@
+.title-add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #275A42;
+}
+
+:host {
+  max-width: 1240px;
+  margin: auto;
+  width: 100%;
+  padding: 40px 10px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+button.btn {
+  border: 1px solid #275A42;
+  background: #FFF8EC;
+  color: #275A42;
+  font-weight: bold;
+  width: 175px;
+  height: 65px;
+  border-radius: 10px;
+  transition: 1s;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+button.btn:hover {
+  background: #10261C;
+  color: #FFF8EC;
+}
+
+label {
+  font-weight: bold;
+  color: #275A42;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, textarea, select, .add-image {
+  width: 100%;
+  border: 1px solid #E6E6E6;
+  height: 55px;
+  padding: 10px;
+  margin-bottom: 25px;
+  background: #FFFFFF;
+  border-radius: 16px;
+}
+
+label[for="content"] ~ div > .fr-wrapper {
+  height: 300px;
+}
+
+input#picture {
+  display: none;
+}
+
+.add-image {
+  background: #FAFAFA;
+  text-align: center;
+  min-height: 100px;
+  height: auto;
+  line-height: 80px;
+  color: #6A6A6A;
+  border: 1px solid #C8C8C8;
+  border-radius: 16px;
+  cursor: pointer;
+
+  .img-preview {
+    max-width: 300px;
+  }
+}
+
+form.ng-submitted {
+  .ng-invalid, .ng-invalid ~ .add-image {
+    border-color: red;
+  }
+}
+
+::ng-deep .darkmode {
+  .title-add, label {
+    color: white !important;
+  }
+}

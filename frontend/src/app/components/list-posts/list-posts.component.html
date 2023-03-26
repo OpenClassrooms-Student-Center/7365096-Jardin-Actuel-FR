@@ -1,0 +1,37 @@
+<section class="list-posts">
+  <div class="list-posts-title">
+    <h2>{{ title }}</h2>
+    <form [formGroup]="searchForm">
+      <input type="search" formControlName="search" placeholder="Recherche">
+      <div class="icon-search"><img src="assets/search.png" alt="Rechercher"></div>
+    </form>
+  </div>
+
+  <div class="list-posts-container">
+    <article *ngFor="let post of posts" class="mini-post">
+      <a [routerLink]="['/posts', post.id]">
+        <img src="{{ post.picture }}" alt="{{ post.title }}" class="mini-post-img">
+        <h3>{{ post.title }}</h3>
+        <p class="intro">{{ removeHTML(post.content ?? '') | slice:0:100 }}...</p>
+        <p class="details">
+          <a class="author" [routerLink]="['/author', post.author?.id]">{{ post.author?.name }}</a>
+          <span class="circle"></span>
+          <span class="date">{{ post.date | date : 'dd MMM' }}</span>
+          <span class="circle"></span>
+          <a [routerLink]="['/category', post.category?.id]" class="category">{{ post.category?.name }}</a>
+        </p>
+      </a>
+    </article>
+    <p *ngIf="posts?.length === 0">Aucun article trouvé...</p>
+  </div>
+
+  <div class="pagination">
+    <div class="pagination-item" *ngIf="page > 1" (click)="changePage(page - 1)">‹</div>
+    <div [ngClass]="{'pagination-item': true, 'pagination-number': true, 'pagination-active': (i + 1) === page}"
+         *ngFor="let _ of [].constructor(totalPages); let i = index;"
+         (click)="changePage(i + 1)">
+      {{ (i + 1) }}
+    </div>
+    <div class="pagination-item" *ngIf="page < totalPages" (click)="changePage(page + 1)">›</div>
+  </div>
+</section>

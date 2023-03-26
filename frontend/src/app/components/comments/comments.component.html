@@ -1,0 +1,35 @@
+<h1>Gestion des commentaires</h1>
+
+
+<div class="comments-management">
+  <div class="comments-title">
+    <div>Auteur</div>
+    <div>Commentaire</div>
+    <div>Article</div>
+  </div>
+
+  <div class="comment" *ngFor="let comment of comments">
+    <div><strong>{{ comment.author?.name }}</strong><br>{{ comment.author?.email}}</div>
+    <div>
+      <p>{{ comment.content }}</p>
+      <p class="actions">
+        <a (click)="publishComment(comment)" class="accept">Valider</a>
+        <a (click)="deleteComment(comment)" class="delete">Supprimer</a>
+      </p>
+    </div>
+    <div class="article">
+      <a [routerLink]="['/posts', comment.post?.id]">
+        <img [src]="comment.post?.picture" [alt]="comment.post?.title">
+        <span>{{ comment.post?.title }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="comment" *ngIf="comments.length === 0">
+    <div class="no-comment">
+      Aucun commentaire à valider
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,21 @@
+<div id="last-posts">
+  <div class="featured-post" *ngFor="let post of lastPosts; let first = first;">
+    <a [routerLink]="['/posts', post.id]">
+      <img class="featured-post-image" [src]="post.picture" [alt]="post.title" />
+      <h2>{{ post.title }}</h2>
+      <p class="featured-post-links" *ngIf="first">
+        <a class="btn">Lire l'article <img src="assets/open.png" alt="" /></a>
+        <a class="btn" [routerLink]="['/author', post.author?.id]">{{ post.author?.name }}</a>
+      </p>
+      <a class="invisible" *ngIf="!first"><img src="assets/open-big.png" alt="" /></a>
+    </a>
+  </div>
+</div>
+
+<app-list-posts [page]="1"></app-list-posts>
+
+<section id="question">
+  <h2>Un projet, une question ?</h2>
+  <p>Si vous avez des projets de jardinage ou des questions sur le jardinage, n'hésitez pas à nous contacter.<br>Nous sommes également disponibles sur les réseaux sociaux pour discuter et partager nos connaissances.</p>
+  <button class="btn btn-primary" [routerLink]="['/contact']">Contactez-nous</button>
+</section>

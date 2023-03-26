@@ -1,0 +1,156 @@
+:host {
+  display: flex;
+  width: 100%;
+}
+
+.contact-page {
+  width: 100%;
+  display: flex;
+}
+
+.contact-social {
+  background: url('/assets/bg-contact.png');
+  width: 440px;
+  margin-right: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.contact-social .contact-part {
+  width: 85%;
+  margin-bottom: 35px;
+  border: 1px solid #275A42;
+  border-radius: 30px;
+  background: #1212124D;
+  padding: 50px 40px;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+form.contact-form {
+  max-width: 650px;
+  margin: auto;
+}
+
+form.contact-form h1 {
+  color: #275A42;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+form.contact-form p {
+  color: #121212;
+  font-size: 15px;
+}
+
+::ng-deep .darkmode {
+  form.contact-form {
+    h1, p {
+      color: #E6E6E6 !important;
+    }
+  }
+}
+
+form.contact-form input, form.contact-form textarea {
+  color: #121212;
+  border: 1px solid #E6E6E6;
+  border-radius: 16px;
+  width: 320px;
+  height: 60px;
+  padding: 15px;
+  font-size: 16px;
+  margin: auto;
+}
+
+.form-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+form.contact-form textarea {
+  width: 100%;
+  height: 300px;
+}
+
+form.contact-form input[type="submit"] {
+  background: #FFF8EC;
+  color: #275A42;
+  border: 1px solid #275A42;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+  font-weight: bold;
+}
+
+form.contact-form input[type="submit"]:hover {
+  background: #10261C;
+  color: #FFF8EC;
+}
+.social-links a {
+  display: flex;
+  border: 1px solid white;
+  color: #FFFFFF;
+  background: #FFFFFF33;
+  width: 44px;
+  height: 44px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links a svg {
+  width: 65%;
+  height: 65%;
+  fill: white !important;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 25px;
+}
+
+.ng-submitted textarea.ng-invalid, .ng-submitted input.ng-invalid {
+  border-color: red !important;
+}
+
+@media all and (max-width: 1000px) {
+  .contact-page {
+    flex-direction: column;
+  }
+
+  .contact-social {
+    width: 100%;
+    background-size: cover;
+  }
+
+  .contact-part {
+    width: 310px !important;
+    padding: 30px 20px !important;
+    margin-top: 35px;
+  }
+
+  form.contact-form {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 668px) {
+  .form-flex {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-flex input {
+    width: 100% !important;
+  }
+
+}
