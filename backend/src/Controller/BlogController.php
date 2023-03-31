@@ -10,6 +10,7 @@ use App\Form\CommentType;
 use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
 use App\Service\FormService;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,6 +41,8 @@ class BlogController extends AbstractController
         $sortDirection = $request->query->get('sort-direction', 'DESC');
         $category = $request->query->get('category') ? $this->entityManager->getReference(Category::class, intval($request->query->get('category'))) : null;
         $search = $request->query->get('search', '');
+        $start = $request->query->get('start', '');
+        $end = $request->query->get('end', '');
 
         $criteria = [];
 
@@ -53,6 +56,14 @@ class BlogController extends AbstractController
 
         if($search) {
             $criteria['search'] = $search;
+        }
+
+        if($start) {
+            $criteria['start'] = (DateTime::createFromFormat('Y-m-d', $start))->setTime(0, 0);
+        }
+
+        if($end) {
+            $criteria['end'] = (DateTime::createFromFormat('Y-m-d', $end))->setTime(23, 59, 59);
         }
 
         ['total' => $total, 'list' => $list] = $this->postRepository->findPosts($criteria, $page, $limit, $sortColumn, $sortDirection);
@@ -104,7 +115,7 @@ class BlogController extends AbstractController
                 ->setAuthor($user)
                 ->setPost($post)
                 ->setPublished(false)
-                ->setDate(new \DateTime());
+                ->setDate(new DateTime());
             $this->entityManager->persist($comment);
             $this->entityManager->flush();
             return $this->json($comment, Response::HTTP_CREATED, [], ['groups' => ['get_post']]);

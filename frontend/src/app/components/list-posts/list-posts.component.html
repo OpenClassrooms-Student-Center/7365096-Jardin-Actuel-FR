@@ -1,10 +1,22 @@
 <section class="list-posts">
   <div class="list-posts-title">
     <h2>{{ title }}</h2>
-    <form [formGroup]="searchForm">
-      <input type="search" formControlName="search" placeholder="Recherche">
-      <div class="icon-search"><img src="assets/search.png" alt="Rechercher"></div>
-    </form>
+    <div [formGroup]="searchForm">
+      <form>
+        <input type="search" formControlName="search" placeholder="Recherche">
+        <div class="icon-search"><img src="assets/search.png" alt="Rechercher"></div>
+      </form>
+      <div id="filter">
+        <button id="button-filter" (click)="toggleFilter()"><img src="assets/filter.png" alt="Filtrer les articles">
+        </button>
+        <div id="filter-content" *ngIf="showFilter">
+          <h3>Filtrer par date</h3>
+          <div>
+            <input type="date" formControlName="start"> - <input type="date" formControlName="end">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="list-posts-container">

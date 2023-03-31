@@ -117,6 +117,46 @@ span.circle {
   cursor: pointer;
 }
 
+.list-posts-title > div {display: flex;align-items: center;justify-content: center;gap: 15px;}
+
+button#button-filter {
+  border: 1px solid #E6E6E6;
+  background: #FFFCF7;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 76px;
+  width: 48px;
+  cursor: pointer;
+}
+
+div#filter-content {
+  position: absolute;
+  right: 0;
+  background: #FFFCF7;
+  padding: 30px 10px;
+  top: 58px;
+  border: 1px solid #E6E6E6;
+  width: 300px;
+  text-align: center;
+}
+
+div#filter {
+  position: relative;
+}
+
+div#filter-content h3 {
+  font-weight: normal;
+  margin-top: 0;
+}
+
+div#filter-content input {
+  border: 1px solid #E6E6E6;
+  color: #000000;
+  padding: 5px;
+}
+
 
 ::ng-deep .darkmode {
   .list-posts-title h2, .list-posts-container h3, .list-posts-container p {
@@ -131,6 +171,10 @@ span.circle {
     color: #E6E6E6;
     border-color: #E6E6E6;
     background: #E6E6E633;
+  }
+
+  div#filter-content {
+    background: #111111;
   }
 }
 

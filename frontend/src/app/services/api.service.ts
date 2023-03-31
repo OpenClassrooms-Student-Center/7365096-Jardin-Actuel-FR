@@ -15,7 +15,7 @@ export class ApiService {
 
   constructor(private router: Router) { }
 
-  public getPosts(page: number = 1, categoryId: number = -1, authorId: number = -1, search: string = ''): Promise<ListPosts> {
+  public getPosts(page: number = 1, categoryId: number = -1, authorId: number = -1, search: string = '', start: string = '', end: string =''): Promise<ListPosts> {
     const url = new URL(this.API_URL + 'posts');
     url.searchParams.append('page', page.toString());
     url.searchParams.append('limit', '9');
@@ -29,6 +29,14 @@ export class ApiService {
 
     if(search !== '') {
       url.searchParams.append('search', search);
+    }
+
+    if(start !== '') {
+      url.searchParams.append('start', start);
+    }
+
+    if(end !== '') {
+      url.searchParams.append('end', end);
     }
 
     return fetch(url.toString()).then(response => response.json()) as Promise<ListPosts>;

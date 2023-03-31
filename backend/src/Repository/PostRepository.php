@@ -39,6 +39,16 @@ class PostRepository extends ServiceEntityRepository
                 ->setParameter('search', '%' . $criteria['search'] . '%');
         }
 
+        if(isset($criteria['start'])) {
+            $qb->andWhere($qb->expr()->gte('p.date', ':start'))
+                ->setParameter('start', $criteria['start']);
+        }
+
+        if(isset($criteria['end'])) {
+            $qb->andWhere($qb->expr()->lte('p.date', ':end'))
+                ->setParameter('end', $criteria['end']);
+        }
+
         if(isset($sortColumn)) {
             $qb->orderBy('p.' . $sortColumn, $sortDirection ?? 'ASC');
         }

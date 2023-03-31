@@ -15,6 +15,9 @@ export class ListPostsComponent implements OnInit, OnChanges, OnDestroy {
   @Input() public authorId: number = -1;
   @Input() public categoryId: number = -1;
   @Input() public title: string = 'Nos publications';
+
+  public showFilter: boolean = false;
+
   private search: string = '';
 
   public posts: Post[] | null = [];
@@ -26,12 +29,14 @@ export class ListPostsComponent implements OnInit, OnChanges, OnDestroy {
 
   public constructor(private api: ApiService) {
     this.searchForm = new FormGroup({
-      search: new FormControl('')
+      search: new FormControl(''),
+      start: new FormControl(''),
+      end: new FormControl('')
     });
 
 
-    this.subscribe = this.searchForm.get('search')?.valueChanges.subscribe(search => {
-      this.search = search;
+    this.subscribe = this.searchForm?.valueChanges.subscribe(search => {
+      this.search = search.search;
       this.updatePosts();
     });
   }
@@ -51,7 +56,7 @@ export class ListPostsComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private updatePosts() {
-    this.api.getPosts(this.page, this.categoryId, this.authorId, this.search).then(list => {
+    this.api.getPosts(this.page, this.categoryId, this.authorId, this.search, this.searchForm.get('start')?.value, this.searchForm.get('end')?.value).then(list => {
       ({
         total: this.total,
         list: this.posts
@@ -67,6 +72,10 @@ export class ListPostsComponent implements OnInit, OnChanges, OnDestroy {
 
   public removeHTML(str: string): string {
     return str.replace(/<[^>]*>/g, '');
+  }
+
+  public toggleFilter(): void {
+    this.showFilter = !this.showFilter;
   }
 
 }
