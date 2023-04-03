@@ -21,5 +21,6 @@
     </div>
     <textarea formControlName="message" placeholder="Votre message"></textarea>
     <input type="submit" (click)="send()" value="Envoyer">
+    <p style="color: green;" *ngIf="success">Votre message a été envoyé avec succès</p>
   </form>
 </div>

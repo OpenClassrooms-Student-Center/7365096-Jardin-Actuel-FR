@@ -12,6 +12,8 @@ export class ContactComponent {
 
   public contactForm: FormGroup;
 
+  public success = false;
+
   public constructor(private title: Title, private router: Router) {
     this.title.setTitle('Contactez-nous - Jardin Actuel');
     this.contactForm = new FormGroup({
@@ -22,11 +24,12 @@ export class ContactComponent {
   }
 
   public send() {
+    this.success = false;
     this.contactForm.markAllAsTouched();
     if(/[éàùèçÉÀÇÈûîÛÎïüÏÜâÂäÄôöÖÔêËÊëŷŸÿŶ]/.test(this.contactForm.get('name')?.value)) {
       alert('Erreur inconue !');
     } else if(this.contactForm.valid) {
-      this.router.navigate(['/']);
+      this.success = true;
     }
   }
 }
