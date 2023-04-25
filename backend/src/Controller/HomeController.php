@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/register', name: 'register')]
+    #[Route('/register', name: 'register', methods: ['POST'])]
     public function register(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $entityManager, FormService $formService): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
